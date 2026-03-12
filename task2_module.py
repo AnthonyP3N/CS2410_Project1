@@ -55,3 +55,14 @@ def average_precipitation(dict):
         return average 
 avg = average_precipitation(example_dict)
 print(avg)
+
+def positive_deviations(dict):
+        above_mean_count = 0
+
+        for value in dict.values():
+                if value > average_precipitation(dict):
+                        above_mean_count += 1
+        return above_mean_count 
+a_mean = positive_deviations(example_dict)
+print(a_mean)
+                
