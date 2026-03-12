@@ -1,3 +1,5 @@
+import random
+
 def merge_sort(arr):
     if len(arr) > 1:    # If array size is one, do nothing
         left_arr = arr[:len(arr)//2] # Creates slices of array, starting at index 0 to index array divide by 2 (midpoint)
@@ -30,7 +32,48 @@ def merge_sort(arr):
             arr[k] = right_arr[j]
             j+= 1
             k+= 1
-
+# End of Merge Sort Algorithm
+"""
 test_arr = [2,3,5,1,7,4,4,4,2,6,0] # Simple Test Array
 merge_sort(test_arr)               # Calls merge_sort function 
 print(test_arr)                    # Prints results
+"""
+# Simple line break between print results, make out put look cleaner
+print("----------------------------------------------------------------------------------------------------------------------------------------------------------------")
+random_test_arr1 = [random.randint(-1000000,1000000) for int in range(10)] # Random 10 Int Array Between - Million to + Million
+print("\nRandom Unsorted Test Array from range negative million to positive million:"
+"", random_test_arr1)
+
+(merge_sort(random_test_arr1))
+
+print("\nRandom Sorted Test Array from range negative million to positive million:"
+"", random_test_arr1, "\n")
+
+print("----------------------------------------------------------------------------------------------------------------------------------------------------------------")
+random_test_arr2 = [random.randint(-10000,10000) for int in range(10)] # Random 10 Int Array Between - Ten Thousand to + Ten Thousand
+print("\nRandom Unsorted Test Array from range negative ten thousand to positive ten thousand:"
+"", random_test_arr2)
+
+(merge_sort(random_test_arr2))
+
+print("\nRandom Sorted Test Array from range negative ten thousand to positive ten thousand:"
+"", random_test_arr2 , "\n")
+print("----------------------------------------------------------------------------------------------------------------------------------------------------------------")
+random_test_arr3 = [random.randint(-1000,1000) for int in range(10)] # Random 10 Int Array Between - Thousand to + Thousand
+print("\nRandom Unsorted Test Array from range negative thousand to positive thousand:"
+"", random_test_arr3)
+
+(merge_sort(random_test_arr3))
+
+print("\nRandom Sorted Test Array from range negative thousand to positive thousand:"
+"", random_test_arr3, "\n")
+print("----------------------------------------------------------------------------------------------------------------------------------------------------------------")
+random_test_arr4 = [random.randint(-10,10) for int in range(10)] # Random 10 Int Array Between - Ten to + Ten
+print("\nRandom Unsorted Test Array from range negative ten to positive ten:"
+"", random_test_arr4)
+
+(merge_sort(random_test_arr4))
+
+print("\nRandom Sorted Test Array from range negative ten to positive ten:"
+"", random_test_arr4, "\n")
+print("----------------------------------------------------------------------------------------------------------------------------------------------------------------")
