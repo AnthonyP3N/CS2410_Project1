@@ -18,3 +18,13 @@ print(max)
 
 min = mod.minimum_precipitation(rainfall_dict)
 print(min)
+
+avg = mod.average_precipitation(rainfall_dict)
+avg = mod.in_to_cm(avg)
+print(avg)
+
+above_mean = mod.positive_deviations(rainfall_dict)
+print(above_mean)
+
+rbs = mod.reverse_bubble_sort(rainfall_dict)
+print(rbs)

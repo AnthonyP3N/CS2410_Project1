@@ -1,4 +1,6 @@
 
+def in_to_cm(value):
+       return f"{(value * 2.54):.2f} cms"
 
 def maximum_precipitation(data):
         max_value = None 
@@ -15,7 +17,7 @@ def maximum_precipitation(data):
                         max_key = key
 
 
-        return max_key, max_value               # Returns max value
+        return max_key, in_to_cm(max_value)             # Returns max value
 
 
 
@@ -31,14 +33,14 @@ def minimum_precipitation(data):
                 if value < min_value:
                         min_value = value
                         min_key = key
-        return min_key, min_value
+        return min_key, in_to_cm(min_value)       
 
 
-def average_precipitation(dict):
+def average_precipitation(data):
         sum = 0
         i = 0 
         average = 0
-        for value in dict.values():
+        for value in data.values():
                 sum += value
                 i += 1
 
@@ -46,19 +48,20 @@ def average_precipitation(dict):
                 return False 
         else: 
                 average = sum/i 
-        return average 
+        return average
 
 
-def positive_deviations(dict):
+def positive_deviations(data):
         above_mean_count = 0
 
-        for value in dict.values():
-                if value > average_precipitation(dict):
+        for value in data.values():
+                if value  > average_precipitation(data):
                         above_mean_count += 1
         return above_mean_count 
 
                 
 def reverse_bubble_sort(data):
+    
     # Convert dictionary items to a list of tuples (key, values)
     items = list(data.items())
     n = len(items)
@@ -71,9 +74,10 @@ def reverse_bubble_sort(data):
             if items[j][1] < items[j + 1][1]:
                 # Swap the elements if they are in the wrong order
                 items[j], items[j + 1] = items[j + 1], items[j]
+        converted_dict = {key: in_to_cm(value) for key, value in items}
                 
     # Convert the sorted list of tuples back to a dictionary
-    return dict(items)
+    return converted_dict
                   
 
     
