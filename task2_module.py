@@ -26,3 +26,16 @@ def maximum_precipitation(dict):
 
 max = maximum_precipitation(example_dict)
 print(max)
+
+def minimum_precipitation(dict):
+        min_value = None
+
+        for value in dict.values():
+                min_value = value
+                break
+        for value in dict.values():
+                if value < min_value:
+                        min_value = value
+        return min_value
+min = minimum_precipitation(example_dict)
+print(min)
