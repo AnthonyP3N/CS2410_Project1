@@ -1,44 +1,38 @@
-example_dict = {"01":133.5,
-                "02":64.3,
-                "03":104.4,
-                "04":86.3,
-                "05":48.5,
-                "06":35.4,
-                "07":55.3,
-                "08":84.9,
-                "09":104.5,
-                "10":104.4,
-                "11":122.6,
-                "12":119.5}
 
-def maximum_precipitation(dict):
+
+def maximum_precipitation(data):
         max_value = None 
+        max_key = None
 
-        for value in dict.values(): # Base Case : If dictionary only has one key-value pair
+        for key, value in data.items(): # Base Case : If dictionary only has one key-value pair
                 max_value = value
+                max_key = key
                 break
         
-        for value in dict.values():             # Case 2 : Continues if dictionary has multiple key-value pair(s)
+        for key, value in data.items():         # Case 2 : Continues if dictionary has multiple key-value pair(s)
                 if value > max_value:           # Tests current value verus current max
                         max_value = value       # Updates if current value is greater than current max value
+                        max_key = key
 
-        return max_value                        # Returns max value
 
-max = maximum_precipitation(example_dict)
-print(max)
+        return max_key, max_value               # Returns max value
 
-def minimum_precipitation(dict):
+
+
+def minimum_precipitation(data):
         min_value = None
+        min_key = None
 
-        for value in dict.values():
+        for key, value in data.items():
                 min_value = value
+                min_key = key
                 break
-        for value in dict.values():
+        for key, value in data.items():
                 if value < min_value:
                         min_value = value
-        return min_value
-min = minimum_precipitation(example_dict)
-print(min)
+                        min_key = key
+        return min_key, min_value
+
 
 def average_precipitation(dict):
         sum = 0
@@ -53,8 +47,7 @@ def average_precipitation(dict):
         else: 
                 average = sum/i 
         return average 
-avg = average_precipitation(example_dict)
-print(avg)
+
 
 def positive_deviations(dict):
         above_mean_count = 0
@@ -63,12 +56,11 @@ def positive_deviations(dict):
                 if value > average_precipitation(dict):
                         above_mean_count += 1
         return above_mean_count 
-a_mean = positive_deviations(example_dict)
-print(a_mean)
+
                 
-def reverse_bubble_sort(d):
+def reverse_bubble_sort(data):
     # Convert dictionary items to a list of tuples (key, values)
-    items = list(d.items())
+    items = list(data.items())
     n = len(items)
 
     # Outer loop for passes
@@ -82,6 +74,7 @@ def reverse_bubble_sort(d):
                 
     # Convert the sorted list of tuples back to a dictionary
     return dict(items)
-bub = reverse_bubble_sort(example_dict)
-print(bub)                    
+                  
+
     
+
