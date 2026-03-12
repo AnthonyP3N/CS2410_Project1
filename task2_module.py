@@ -39,3 +39,19 @@ def minimum_precipitation(dict):
         return min_value
 min = minimum_precipitation(example_dict)
 print(min)
+
+def average_precipitation(dict):
+        sum = 0
+        i = 0 
+        average = 0
+        for value in dict.values():
+                sum += value
+                i += 1
+
+        if i == 0:
+                return False 
+        else: 
+                average = sum/i 
+        return average 
+avg = average_precipitation(example_dict)
+print(avg)
