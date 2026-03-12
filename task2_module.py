@@ -1,6 +1,6 @@
 
 def in_to_cm(value):
-       return f"{(value * 2.54):.2f} cms"
+       return round(value * 2.54, 2)
 
 def maximum_precipitation(data):
         max_value = None 
@@ -61,9 +61,12 @@ def positive_deviations(data):
 
                 
 def reverse_bubble_sort(data):
-    
+    convert_dict = {}
+    for key in data:
+           convert_dict[key] = in_to_cm(data[key])
+
     # Convert dictionary items to a list of tuples (key, values)
-    items = list(data.items())
+    items = list(convert_dict.items())
     n = len(items)
 
     # Outer loop for passes
@@ -74,10 +77,9 @@ def reverse_bubble_sort(data):
             if items[j][1] < items[j + 1][1]:
                 # Swap the elements if they are in the wrong order
                 items[j], items[j + 1] = items[j + 1], items[j]
-        converted_dict = {key: in_to_cm(value) for key, value in items}
                 
     # Convert the sorted list of tuples back to a dictionary
-    return converted_dict
+    return dict(items)
                   
 
     
