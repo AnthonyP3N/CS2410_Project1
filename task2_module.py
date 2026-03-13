@@ -1,8 +1,48 @@
+def merge_sort(arr):
+    if len(arr) > 1:    # If array size is one, do nothing
+        left_arr = arr[:len(arr)//2] # Creates slices of array, starting at index 0 to index array divide by 2 (midpoint)
+        right_arr = arr[len(arr)//2:] # Creates slices of array, starting at middle to the end of remaining of array
+    
+    # recursion calls
+        merge_sort(left_arr)
+        merge_sort(right_arr)
 
+        # merge left and right array
+        i = 0 # keeps track of left_arr index
+        j = 0 # keeps track of right_arr index
+        k = 0 # keeps track of merged array index
+
+        while i < len(left_arr) and j < len(right_arr):
+            if left_arr[i] < right_arr[j]: # Base case - Left Array index < Right Array index
+                arr[k] = left_arr[i]       # Save value relating to Left Array Index to Merge Array 
+                i += 1                     
+            else:                         
+                arr[k] = right_arr[j]      # Case 2 - Right Array index <= Left Array Index
+                j += 1      
+            k += 1
+        
+        while i < len(left_arr):           # Case 3 - Transfer all sorted Left Array elements to Merge Array
+            arr[k] = left_arr[i]
+            i += 1
+            k += 1
+    
+        while j < len(right_arr):         # Case 4 - Check if at end of Right Array, then assign every element to Merge Array
+            arr[k] = right_arr[j]
+            j+= 1
+            k+= 1
+
+
+
+
+
+
+# Function to easily convert inches to centimeters, use round to keep numbers readable, converts value to float at decimal point 2
 def in_to_cm(value):
        return round(value * 2.54, 2)
 
+# Function to calculate max value of precipitation (month:rainfall)
 def maximum_precipitation(data):
+
         max_value = None 
         max_key = None
 
@@ -20,8 +60,9 @@ def maximum_precipitation(data):
         return max_key, in_to_cm(max_value)             # Returns max value
 
 
-
+# Function to calculate min value of precipitation (month:rainfall)
 def minimum_precipitation(data):
+        
         min_value = None
         min_key = None
 
@@ -29,28 +70,33 @@ def minimum_precipitation(data):
                 min_value = value
                 min_key = key
                 break
+
         for key, value in data.items():
                 if value < min_value:
                         min_value = value
                         min_key = key
+
         return min_key, in_to_cm(min_value)       
 
-
+# Function to calculate average of total of all precipitation (total/i = average)
 def average_precipitation(data):
-        sum = 0
+
+        total = 0
         i = 0 
         average = 0
+
         for value in data.values():
-                sum += value
+                total += value
                 i += 1
 
         if i == 0:
-                return False 
+                return None 
         else: 
-                average = sum/i 
+                average = total/i 
+                
         return average
 
-
+# Function to count total amount of months above average/mean
 def positive_deviations(data):
         above_mean_count = 0
 
@@ -59,7 +105,7 @@ def positive_deviations(data):
                         above_mean_count += 1
         return above_mean_count 
 
-                
+# Function for reverse bubble sort                
 def reverse_bubble_sort(data):
     convert_dict = {}
     for key in data:
